@@ -1,1 +1,1 @@
-	mtx: main.cpp -o mtx
+	mtx: main.cpp mtx.cpp -o mtx

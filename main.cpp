@@ -9,5 +9,5 @@ int main()
   int ** t = ct(m,n);
   read(t, m, n);
   write(t, m, n)
-  dt(t, m, n);
+  dt(t, m);
 }
