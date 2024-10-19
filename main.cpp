@@ -12,11 +12,12 @@ int main()
   }
   try {
     int ** t = memory_alloc(m,n);
+    read(t, m, n);
+    write(t, m, n);
+    clean(t, m);
+
   }
   catch (const std::bad_alloc& e) {
     std::cerr << "Memory Allocation Error: " << e.what() << "\n";
   }
-  read(t, m, n);
-  write(t, m, n)
-  clean(t, m);
 }

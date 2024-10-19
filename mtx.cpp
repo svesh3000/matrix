@@ -1,4 +1,6 @@
+#include <iostream>
 #include "mtx.hpp"
+
 int ** memory_alloc(size_t m, size_t n)
 {
   int ** mtx = new int*[m];
@@ -12,7 +14,7 @@ void read(int ** mtx, size_t m, size_t n)
 {
   int number = 0;
   for (size_t i = 0; i < m; i++) {
-    for (size_t j = 0; j < n; i++) {
+    for (size_t j = 0; j < n; j++) {
       std::cin >> number;
       mtx[i][j] = number;
     }
@@ -24,13 +26,13 @@ void read(int ** mtx, size_t m, size_t n)
 
 void write(const int * const * mtx, size_t m, size_t n)
 {
-  for (size_t i = 0; i < n, i++) {
-    for (size_t j = 0; j < m; j++) {
-      if (j != m-1) {
-        std::cout << mtx[j][i] << " ";
+  for (size_t i = 0; i < m; i++) {
+    for (size_t j = 0; j < n; j++) {
+      if (j != n - 1) {
+        std::cout << mtx[i][j] << " ";
       }
       else {
-        std::cout << mtx[j][i];
+        std::cout << mtx[i][j];
       }
     }
     std::cout << "\n";
