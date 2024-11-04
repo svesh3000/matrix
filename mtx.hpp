@@ -1,8 +1,28 @@
 #ifndef MTX_HPP
 #define MTX_HPP
 #include <cstddef>
-int ** memory_alloc(size_t m, size_t n); 
-void clean(int ** t, size_t m);
-void read(int ** mtx, size_t m, size_t n);
-void write(const int * const * mtx, size_t m, size_t n); 
-#endif 
+namespace sveshnikov
+{
+  int **memory_alloc(size_t m, size_t n);
+  void read_matrix(int **mtx, size_t m, size_t n);
+  void write_matrix(const int *const *mtx, size_t m, size_t n);
+  void clean_matrix(int **t, size_t m);
+}
+
+struct Matrix
+{
+  public:
+    Matrix(size_t m, size_t n);
+    ~Matrix();
+    Matrix(const Matrix &copiedMtx);
+    size_t getNumRows() const;
+    size_t getNumColumns() const;
+    size_t fillMatrix();
+    size_t resizeMatrix(size_t newRows, size_t newColumns);
+    int **mtx;
+
+  private:
+    size_t num_rows;
+    size_t num_columns;
+};
+#endif
