@@ -20,10 +20,12 @@ int main()
   }
   catch (const std::bad_alloc &e)
   {
-    std::cerr << "Memory Allocation Error: " << e.what() << "n";
+    std::cerr << "Memory Allocation Error: " << e.what() << "\n";
+    return 1;
   }
   catch (const std::invalid_argument &e)
   {
-    std::cerr << "Invalid Argument: " << e.what() << "n";
+    std::cerr << "Invalid Argument: " << e.what() << "\n";
+    return 1;
   }
 }

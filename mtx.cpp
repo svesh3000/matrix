@@ -25,6 +25,7 @@ void read_matrix(int **mtx, size_t m, size_t n)
   if (!std::cin)
   {
     std::cerr << "ERROR\n";
+    throw std::invalid_argument("ERROR: Not a number");
   }
 }
 
