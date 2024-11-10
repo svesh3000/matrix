@@ -4,7 +4,7 @@
 
 Matrix::Matrix(size_t m, size_t n) : num_rows_(m), num_columns_(n)
 {
-  sveshnikov::memory_alloc(num_rows_, num_columns_);
+  mtx_ = sveshnikov::memory_alloc(num_rows_, num_columns_);
 }
 
 Matrix::Matrix(const Matrix &copiedMatrix) : num_rows_(copiedMatrix.num_rows_), num_columns_(copiedMatrix.num_columns_)
@@ -35,7 +35,7 @@ size_t Matrix::getNumColumns() const
   return num_columns_;
 }
 
-size_t Matrix::fillMatrix()
+void Matrix::fillMatrix()
 {
   sveshnikov::read_matrix(mtx_, num_rows_, num_columns_);
 }
@@ -46,14 +46,10 @@ size_t Matrix::resizeMatrix(size_t newRows, size_t newColumns)
   {
     throw std::invalid_argument("ERROR: The new dimensions of the matrix are not positive");
   }
-  int **newMtx = new int *[newRows];
-  for (int i = 0; i < newRows; ++i)
+  int **newMtx = sveshnikov::memory_alloc(newRows, newColumns);
+  for (int i = 0; i < num_rows_ && i < newRows; ++i)
   {
-    newMtx[i] = new int[newColumns]{0};
-  }
-  for (int i = 0; i < num_rows_ || i < newRows; ++i)
-  {
-    for (int j = 0; j < num_columns_ || j < newColumns; ++j)
+    for (int j = 0; j < num_columns_ && j < newColumns; ++j)
     {
       newMtx[i][j] = mtx_[i][j];
     }

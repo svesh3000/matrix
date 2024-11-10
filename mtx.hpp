@@ -17,12 +17,12 @@ struct Matrix
     Matrix(const Matrix &copiedMtx);
     size_t getNumRows() const;
     size_t getNumColumns() const;
-    size_t fillMatrix();
+    void fillMatrix();
     size_t resizeMatrix(size_t newRows, size_t newColumns);
-    int **mtx;
+    int **mtx_;
 
   private:
-    size_t num_rows;
-    size_t num_columns;
+    size_t num_rows_;
+    size_t num_columns_;
 };
 #endif
