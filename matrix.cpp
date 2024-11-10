@@ -2,42 +2,42 @@
 #include <iostream>
 #include <stdexcept>
 
-Matrix::Matrix(size_t m, size_t n) : num_rows(m), num_columns(n)
+Matrix::Matrix(size_t m, size_t n) : num_rows_(m), num_columns_(n)
 {
-  sveshnikov::memory_alloc(num_rows, num_columns);
+  sveshnikov::memory_alloc(num_rows_, num_columns_);
 }
 
-Matrix::Matrix(const Matrix &copiedMatrix) : num_rows(copiedMatrix.num_rows), num_columns(copiedMatrix.num_columns)
+Matrix::Matrix(const Matrix &copiedMatrix) : num_rows_(copiedMatrix.num_rows_), num_columns_(copiedMatrix.num_columns_)
 {
-  mtx = new int *[num_rows];
-  for (size_t i = 0; i < num_rows; i++)
+  mtx_ = new int *[num_rows_];
+  for (size_t i = 0; i < num_rows_; i++)
   {
-    mtx[i] = new int[num_columns];
-    for (size_t j = 0; j < num_columns; j++)
+    mtx_[i] = new int[num_columns_];
+    for (size_t j = 0; j < num_columns_; j++)
     {
-      mtx[i][j] = copiedMatrix.mtx[i][j];
+      mtx_[i][j] = copiedMatrix.mtx_[i][j];
     }
   }
 }
 
 Matrix::~Matrix()
 {
-  sveshnikov::clean_matrix(mtx, num_rows);
+  sveshnikov::clean_matrix(mtx_, num_rows_);
 }
 
 size_t Matrix::getNumRows() const
 {
-  return num_rows;
+  return num_rows_;
 }
 
 size_t Matrix::getNumColumns() const
 {
-  return num_columns;
+  return num_columns_;
 }
 
 size_t Matrix::fillMatrix()
 {
-  sveshnikov::read_matrix(mtx, num_rows, num_columns);
+  sveshnikov::read_matrix(mtx_, num_rows_, num_columns_);
 }
 
 size_t Matrix::resizeMatrix(size_t newRows, size_t newColumns)
@@ -51,15 +51,15 @@ size_t Matrix::resizeMatrix(size_t newRows, size_t newColumns)
   {
     newMtx[i] = new int[newColumns]{0};
   }
-  for (int i = 0; i < num_rows || i < newRows; ++i)
+  for (int i = 0; i < num_rows_ || i < newRows; ++i)
   {
-    for (int j = 0; j < num_columns || j < newColumns; ++j)
+    for (int j = 0; j < num_columns_ || j < newColumns; ++j)
     {
-      newMtx[i][j] = mtx[i][j];
+      newMtx[i][j] = mtx_[i][j];
     }
   }
-  sveshnikov::clean_matrix(mtx, num_rows);
-  mtx = newMtx;
-  num_rows = newRows;
-  num_columns = newColumns;
+  sveshnikov::clean_matrix(mtx_, num_rows_);
+  mtx_ = newMtx;
+  num_rows_ = newRows;
+  num_columns_ = newColumns;
 }

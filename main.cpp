@@ -5,7 +5,7 @@
 
 int main()
 {
-  size_t m = 0, n = 0;
+  size_t m = 0, n = 0, new_m, new_n;
   std::cin >> m >> n;
   if (!std::cin)
   {
@@ -16,6 +16,10 @@ int main()
   {
     Matrix matrix(m, n);
     matrix.fillMatrix();
+    sveshnikov::write_matrix(matrix.mtx, m, n);
+    std::cout << "Введи новые размеры матрицы\n";
+    std::cin >> new_m >> new_n;
+    matrix.resizeMatrix(new_m, new_n);
     sveshnikov::write_matrix(matrix.mtx, m, n);
   }
   catch (const std::bad_alloc &e)

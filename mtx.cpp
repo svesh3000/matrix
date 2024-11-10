@@ -1,7 +1,7 @@
 #include "mtx.hpp"
 #include <iostream>
 
-int **memory_alloc(size_t m, size_t n)
+int **sveshnikov::memory_alloc(size_t m, size_t n)
 {
   int **mtx = new int *[m];
   for (size_t i = 0; i < m; i++)
@@ -11,7 +11,7 @@ int **memory_alloc(size_t m, size_t n)
   return mtx;
 }
 
-void read_matrix(int **mtx, size_t m, size_t n)
+void sveshnikov::read_matrix(int **mtx, size_t m, size_t n)
 {
   int number = 0;
   for (size_t i = 0; i < m; i++)
@@ -29,7 +29,7 @@ void read_matrix(int **mtx, size_t m, size_t n)
   }
 }
 
-void write_matrix(const int *const *mtx, size_t m, size_t n)
+void sveshnikov::write_matrix(const int *const *mtx, size_t m, size_t n)
 {
   for (size_t i = 0; i < m; i++)
   {
@@ -48,7 +48,7 @@ void write_matrix(const int *const *mtx, size_t m, size_t n)
   }
 }
 
-void clean(int **t, size_t m)
+void sveshnikov::clean_matrix(int **t, size_t m)
 {
   for (size_t i = 0; i < m; ++i)
   {
