@@ -11,15 +11,14 @@ namespace sveshnikov
 
 struct Matrix
 {
-  public:
-    Matrix(size_t m, size_t n);
-    ~Matrix();
-    Matrix(const Matrix &copiedMtx);
-    size_t getNumRows() const;
-    size_t getNumColumns() const;
-    void fillMatrix();
-    size_t resizeMatrix(size_t newRows, size_t newColumns);
-    int **mtx_;
+  Matrix(size_t m, size_t n);
+  ~Matrix();
+  Matrix(const Matrix &copiedMtx);
+  size_t getNumRows() const;
+  size_t getNumColumns() const;
+  void fillMatrix();
+  void resizeMatrix(size_t newRows, size_t newColumns);
+  int **mtx_;
 
   private:
     size_t num_rows_;

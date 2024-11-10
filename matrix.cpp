@@ -40,7 +40,7 @@ void Matrix::fillMatrix()
   sveshnikov::read_matrix(mtx_, num_rows_, num_columns_);
 }
 
-size_t Matrix::resizeMatrix(size_t newRows, size_t newColumns)
+void Matrix::resizeMatrix(size_t newRows, size_t newColumns)
 {
   if (newRows <= 0 || newColumns <= 0)
   {

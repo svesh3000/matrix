@@ -5,7 +5,7 @@
 
 int main()
 {
-  size_t m = 0, n = 0, new_m, new_n;
+  size_t m = 0, n = 0, new_m = 0, new_n = 0;
   std::cin >> m >> n;
   if (!std::cin || m <= 0 || n <= 0)
   {
@@ -17,7 +17,11 @@ int main()
     Matrix matrix(m, n);
     matrix.fillMatrix();
     sveshnikov::write_matrix(matrix.mtx_, m, n);
-    std::cout << "Введи новые размеры матрицы\n";
+    std::cout << "Sizes: " << matrix.getNumColumns() << " " << matrix.getNumRows() << "\n";
+    std::cout << "A copy of the matrix\n";
+    Matrix copiedMatrix = matrix;
+    sveshnikov::write_matrix(matrix.mtx_, m, n);
+    std::cout << "Enter the new dimensions of the matrix: ";
     std::cin >> new_m >> new_n;
     if (!std::cin)
     {
